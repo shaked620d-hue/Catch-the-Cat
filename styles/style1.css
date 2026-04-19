@@ -1,0 +1,85 @@
+/* איפוס בסיסי וביטול גלילה */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black; /* מונע הבזק לבן בטעינה */
+}
+
+/* המכולה הראשית של החדר */
+#room {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+/* תמונת הרקע - פריסה מלאה */
+#mainImg, .mainImg { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* מבטיח מילוי מלא של המסך גם אם היחס משתנה */
+    z-index: 1;
+}
+
+/* תיבת הטקסט - עיצוב נקי וקריא */
+p {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    margin: 0;
+    pointer-events: none; /* מאפשר ללחוץ על דברים שנמצאים מאחורי הטקסט */
+    white-space: pre-wrap;
+}
+
+/* אלמנטים לחיצים (חצים/אייקונים) - איחוד מחלקות */
+.btn-click, .clickable-icon {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-click:hover, .clickable-icon:hover {
+    transform: scale(1.15);
+}
+
+/* מיקומים ספציפיים */
+#b1 { top: 5%;  left: 38%; }
+#b2 { top: 38%; left: 41%; }
+#b3 { top: 16%; left: 28%; }
+
+/* מסך ה-Zoom (Overlay) */
+#deepBackground {
+    position: fixed;
+    inset: 0; /* קיצור ל-top, bottom, left, right: 0 */
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+#clickedImage {
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
