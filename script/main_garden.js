@@ -1,13 +1,14 @@
-import { locations } from './data.js';
+import { textsForlocations,showLocation } from './data.js';
 
 let currentLocationId;
-let timer;
 let key = false;
 let start = false;
 
-export function startGame() {
+/*פונקציית התחלת המשחק מאפסת את המשתנים וקוראת לפונקציית טעינת מראה המיקום */
+ function startGame() {
     currentLocationId = 1;
-    state = {};
     start = true;
     showLocation(currentLocationId);
 }
+window.addEventListener('load', startGame);
+
