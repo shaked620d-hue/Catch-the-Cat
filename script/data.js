@@ -187,6 +187,19 @@ function taskManagement()
     }
  }
 
+function nextPlace()
+ {
+     const opt = document.getElementById('options');
+     opt.replaceChildren();
+          const nextPlace = document.createElement('button');
+          nextPlace.id = 'nextPlace';
+          nextPlace.textContent = 'משימה הושלמה!! שלב הבא!'
+          nextPlace.className = 'mission1-btn';
 
- 
+          nextPlace.onclick = () => {
+             loc++;
+             showLocation(loc);
+             };
+          opt.appendChild(nextPlace);
 
+ }
