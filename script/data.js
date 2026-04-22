@@ -229,6 +229,22 @@ function taskManagement()
    
     }
 
+          function  mission3_find()
+      {
+             const opt = document.getElementById('options');
+                let btnImg = document.createElement('img');
+                btnImg.src=textsForlocations[loc-1].btnSrc;
+                btnImg.id = 'tail';
+                btnImg.className = 'find-tail'; // קלאס חדש ל-CSS
+                opt.appendChild(btnImg);
+
+                btnImg.onclick=()=>{
+                    nextPlace();
+                }
+
+      }
+
+
 
 function nextPlace()
  {
