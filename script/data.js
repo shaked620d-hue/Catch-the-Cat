@@ -10,12 +10,14 @@ export const textsForlocations = [
     {
         id: 2,
         text: "בצעו את המשימה והיכנסו לחדר הבא",
+        src:'../images/livingRoom.png',
         buttens: [],
         mission: false
     },
     {
         id: 3,
         text: "הקשב!!! יש יללות חתול! המשימה עכשיו למצוא את החתלתול!",
+        src:'../images/kitchen.png',
         buttens: [],
         mission: false
     }
