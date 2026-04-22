@@ -140,3 +140,53 @@ function taskManagement()
     }
  }
 
+  function mission1_quiz()
+ {  
+    const opt = document.getElementById('options');
+    const missionBtn = document.createElement('button');
+    const form = document.createElement('form');
+    form.id = 'mission1'
+
+    for(let i =0; i<textsForlocations[loc-1].missionItems.length; i++)
+    {
+        const label = document.createElement('label');
+        label.textContent = textsForlocations[loc-1].missionItems[i].question;
+        label.style.display = 'block';
+        form.appendChild(label);
+
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.id = `answer-input_${i+1}`;
+        input.placeholder = 'הקש תשובה במספרים...';
+        input.required = true;
+        form.appendChild(input);
+    }
+
+    const submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.textContent = 'שלח תשובה';
+    form.appendChild(submitBtn);
+
+    opt.appendChild(form); 
+    form.onsubmit = (e)=> {
+        e.preventDefault();
+        let correct = true;
+        for(let i =0; i<textsForlocations[loc-1].missionItems.length; i++)
+        {
+            const answer = document.getElementById(`answer-input_${i+1}`);
+            if(answer.value !==textsForlocations[loc-1].missionItems[i].correctAnswer)
+            {
+                correct = false;
+                break;
+            }
+        }
+        if(correct)
+        {
+         nextPlace();
+        } 
+    }
+ }
+
+
+ 
+
