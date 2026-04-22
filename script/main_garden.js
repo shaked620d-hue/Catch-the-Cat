@@ -1,7 +1,6 @@
 import { textsForlocations,showLocation } from './data.js';
 
 let currentLocationId;
-let key = false;
 let start = false;
 
 /*פונקציית התחלת המשחק מאפסת את המשתנים וקוראת לפונקציית טעינת מראה המיקום */
@@ -11,4 +10,3 @@ let start = false;
     showLocation(currentLocationId);
 }
 window.addEventListener('load', startGame);
-

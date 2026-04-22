@@ -54,6 +54,8 @@ p {
     cursor: pointer;
     z-index: 20;
     transition: transform 0.2s ease-in-out;
+    width: 300px;  /* שנה את המספר לפי הצורך */
+    height: auto;
 }
 
 .btn-click:hover, .clickable-icon:hover {
@@ -61,25 +63,26 @@ p {
 }
 
 /* מיקומים ספציפיים */
-#b1 { top: 5%;  left: 38%; }
-#b2 { top: 38%; left: 41%; }
-#b3 { top: 16%; left: 28%; }
+#btn_0_1 { top: 23%;  left: 62%; }
+#btn_0_2 { top: -1%; left: 13%; }
 
 /* מסך ה-Zoom (Overlay) */
-#deepBackground {
+#overlay {
     position: fixed;
-    inset: 0; /* קיצור ל-top, bottom, left, right: 0 */
-    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    cursor: zoom-out;
+    z-index: 9999;
+    cursor: pointer;
 }
 
-#clickedImage {
+#overlay img {
     max-width: 90%;
     max-height: 90%;
-    border: 2px solid white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
