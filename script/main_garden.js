@@ -8,5 +8,7 @@ let start = false;
     currentLocationId = 1;
     start = true;
     showLocation(currentLocationId);
+
+    
 }
 window.addEventListener('load', startGame);

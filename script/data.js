@@ -27,16 +27,26 @@ export const textsForlocations = [
     {
         id: 2,
         text: "בצעו את המשימה והיכנסו לחדר הבא",
-        src:'../images/livingRoom.png',
-        buttensSrc: [],
-        missionItems:[]
+        src:'../images/liv.png',
+        buttensSrc: ["../images/l1.png","../images/l2.png"],
+        missionItems:["../images/item1.png","../images/item2.png","../images/item3.png",
+            "../images/item4.png","../images/item5.png"],
+        counter:0
     },
     {
         id: 3,
         text: "הקשב!!! יש יללות חתול! המשימה עכשיו למצוא את החתלתול!",
-        src:'../images/kitchen.png',
+        src:'../images/bedRoom.png',
         buttensSrc: [],
+        btnSrc: "../images/tail.png",
         missionItems:[]
+    },
+    {
+        id:4,
+        text: "כל הכבוד! מצאתם את החתול עכשיו תוכלו להאכיל אותו",
+        src: "../images/find.png",
+        buttensSrc: []
+
     }
 ];
 
@@ -54,6 +64,7 @@ export function showLocation(currentId) {
     room.appendChild(image);
 
     let firstText = document.createElement('p');
+    firstText.className = 'firstText'
     room.appendChild(firstText);
     
     let fullText = textsForlocations[currentId - 1].text;
@@ -135,8 +146,10 @@ function taskManagement()
         mission2_collect();
         break;
        case 2:
-            mission3_drag();
+            mission3_find();
             break;
+        case 3:
+
     }
  }
 
@@ -187,6 +200,36 @@ function taskManagement()
     }
  }
 
+
+ function mission2_collect()
+ {  const p = document.createElement('p');
+        p.id = 'counter_p'
+         p.textContent = "מספר פריטים שמצאת = 0";
+        options.appendChild(p);
+     const current = textsForlocations[loc-1];
+    
+    const sources = current.missionItems || [];
+    sources.forEach((src, i) => {
+        let btnImg = document.createElement('img');
+        btnImg.src = `../images/item${i+1}.png`; 
+        btnImg.id = `item_${i+1}`;
+        btnImg.className = 'item-click'; 
+        options.appendChild(btnImg);
+        
+        btnImg.onclick = ()=> {
+            btnImg.remove();
+            current.counter++;
+            console.log("פריטים שמצאת = " +  current.counter);
+            p.textContent = "פריטים = " +  current.counter;
+            if(current.counter===5)
+            nextPlace();
+        }
+        
+    });
+   
+    }
+
+
 function nextPlace()
  {
      const opt = document.getElementById('options');
@@ -194,10 +237,11 @@ function nextPlace()
           const nextPlace = document.createElement('button');
           nextPlace.id = 'nextPlace';
           nextPlace.textContent = 'משימה הושלמה!! שלב הבא!'
-          nextPlace.className = 'mission1-btn';
+          nextPlace.className = 'mission-btn';
 
           nextPlace.onclick = () => {
              loc++;
+             nextPlace.remove();
              showLocation(loc);
              };
           opt.appendChild(nextPlace);

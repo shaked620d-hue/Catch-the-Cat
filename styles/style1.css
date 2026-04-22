@@ -29,7 +29,7 @@ body, html {
 }
 
 /* תיבת הטקסט - עיצוב נקי וקריא */
-p {
+.firstText {
     position: fixed;
     bottom: 30px;
     left: 50%;
@@ -48,6 +48,21 @@ p {
     white-space: pre-wrap;
 }
 
+#counter_p {
+    position: absolute;      /* נשאר במקום גם אם גוללים */
+    top: 3%;           /* מרחק מהקצה העליון */
+    right: 85%;         /* מרחק מהקצה הימני */
+    background-color: rgba(255, 255, 255, 0.751); /* רקע כהה שקוף */
+    color: black;        /* טקסט לבן */
+    padding: 10px 20px;  /* ריווח פנימי */
+    border-radius: 50px; /* פינות עגולות */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    z-index: 1000;       /* מוודא שזה יהיה מעל הכל */
+    direction: rtl;      /* יישור טקסט לימין */
+    margin: 0;           /* ביטול שוליים דיפולטיביים של p */
+}
+
 /* אלמנטים לחיצים (חצים/אייקונים) - איחוד מחלקות */
 .btn-click, .clickable-icon {
     position: absolute;
@@ -56,15 +71,42 @@ p {
     transition: transform 0.2s ease-in-out;
     width: 300px;  /* שנה את המספר לפי הצורך */
     height: auto;
+    pointer-events: auto;
+
 }
 
 .btn-click:hover, .clickable-icon:hover {
     transform: scale(1.15);
 }
 
+.item-click, .clickable-icon {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.2s ease-in-out;
+    width: 50px;  /* שנה את המספר לפי הצורך */
+    height: auto;
+    pointer-events: auto;
+
+}
+
+.item-click:hover, .clickable-icon:hover {
+    transform: scale(1.15);
+}
 /* מיקומים ספציפיים */
 #btn_0_1 { top: 23%;  left: 62%; }
 #btn_0_2 { top: -1%; left: 13%; }
+
+#btn_1_1 { top: -13%;  left: 54%; }
+#btn_1_2 { top: 34%; left: 55%; }
+
+#item_1 {top:55%; left:70%}
+#item_2 {top:60%; left:34%}
+#item_3 {top:47%; left:87%}
+#item_4 {top:81%; left:25%}
+#item_5 {top:29%; left:67%}
+
+
 
 /* מסך ה-Zoom (Overlay) */
 #overlay {
@@ -87,11 +129,18 @@ p {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* המיכל של הכל - חייב להיות relative */
+
 #options {
-    position: relative;
+    position: absolute; /* שנה מ-relative ל-absolute */
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    pointer-events:all; /* מאפשר לחיצה על מה שמתחת, אלא אם זה אלמנט פעיל */
 }
+
+/* ודא שהכפתורים עצמם מחזירים לעצמם את יכולת הלחיצה */
+
 
 /* הטופס עצמו */
 #mission1 {
@@ -132,6 +181,56 @@ p {
     font-size: 1.1rem;
 }
 
-.mission1-btn:hover {
+.mission-btn:hover {
     background-color: #e67e22;
 }
+
+.mission-btn {
+    position: absolute;
+    top:50%;
+    left:41%;
+    z-index: 150; /* מעל התמונה */
+    padding: 15px 25px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    font-size: 1.1rem;
+}
+
+.mission-btn:hover {
+    background-color: #e67e22;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* או שחור, מה שמתאים למשחק */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* הכי גבוה שיש */
+}
+
+.find-tail {
+    position: absolute;
+    
+    /* שחקי עם המספרים האלו כדי למקם את הזנב בתוך המטבח/חדר */
+    top: 82%;  
+    left: 20%; 
+    
+    width: 100px; /* גודל הזנב */
+    height: auto;
+    cursor: pointer;
+    z-index: 10; /* מוודא שזה מעל תמונת הרקע */
+    
+    /* אופציונלי: הופך את הזנב לקצת שקוף או מטשטש אותו אם רוצים להקשות */
+    transition: transform 0.3s;
+}
+
