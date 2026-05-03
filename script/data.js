@@ -8,26 +8,30 @@ export const textsForlocations = [
         missionItems: [
     {
         question: "כמה חיפושיות יש בגינה?",
-        correctAnswer: "5",
+        correctAnswer: "8",
     },
     {
         question: "כמה פטריות יש בגינה?",
+        correctAnswer: "6",
+    },
+     {
+        question: "כמה עננים בשמים?",
         correctAnswer: "4",
     },
     {
         question: "כמה חלונות יש לבית?",
-        correctAnswer: "6",
+        correctAnswer: "8",
     },
     {
-        question: "כמה חמניות יש בגינה?",
-        correctAnswer: "2",
+        question: "כמה חמניות גדולות יש בגינה?",
+        correctAnswer: "3",
     }
 ]
     },
     {
         id: 2,
         text: "בצעו את המשימה והיכנסו לחדר הבא",
-        src:'../images/liv.png',
+        src:'../images/livingRoom.png',
         buttensSrc: ["../images/l1.png","../images/l2.png"],
         missionItems:["../images/item1.png","../images/item2.png","../images/item3.png",
             "../images/item4.png","../images/item5.png"],
@@ -45,7 +49,9 @@ export const textsForlocations = [
         id:4,
         text: "כל הכבוד! מצאתם את החתול עכשיו תוכלו להאכיל אותו",
         src: "../images/find.png",
-        buttensSrc: []
+        buttensSrc:[],
+        food: ["../images/fish.png"]
+
 
     }
 ];
@@ -76,6 +82,7 @@ export function showLocation(currentId) {
             i++;
             timer = setTimeout(type, 70);
         } else {
+                
                 firstText.remove();
                 showOptions();          
         }
@@ -149,7 +156,8 @@ function taskManagement()
             mission3_find();
             break;
         case 3:
-
+             mission4_drag();
+             break;
     }
  }
 
@@ -177,6 +185,7 @@ function taskManagement()
 
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
+    submitBtn.id="submit_btn";
     submitBtn.textContent = 'שלח תשובה';
     form.appendChild(submitBtn);
 
@@ -201,10 +210,12 @@ function taskManagement()
  }
 
 
+
+
  function mission2_collect()
  {  const p = document.createElement('p');
         p.id = 'counter_p'
-         p.textContent = "מספר פריטים שמצאת = 0";
+         p.textContent = "פריטים = 0";
         options.appendChild(p);
      const current = textsForlocations[loc-1];
     
@@ -219,7 +230,6 @@ function taskManagement()
         btnImg.onclick = ()=> {
             btnImg.remove();
             current.counter++;
-            console.log("פריטים שמצאת = " +  current.counter);
             p.textContent = "פריטים = " +  current.counter;
             if(current.counter===5)
             nextPlace();
@@ -245,21 +255,82 @@ function taskManagement()
       }
 
 
+      function mission4_drag()
+      {
+         const opt = document.getElementById('options');
+         const room = document.getElementById('room');
+         const current = textsForlocations[loc-1];
+         const items = document.createElement('div');
+         items.id = 'items';
+
+
+         const dragItem = document.createElement('img');
+         dragItem.src = current.food[0];
+         dragItem.id = 'drag_item';
+         dragItem.className = 'draggable';
+         dragItem.draggable = true;
+         items.appendChild(dragItem);
+
+         if(!room.querySelector('div')){
+         const dropArea = document.createElement('div');
+         dropArea.id = 'dropArea';
+         room.appendChild(dropArea);
+
+         dragItem.ondragstart = (e) => {
+            e.dataTransfer.setData("text",e.target.id);
+         }
+
+         dropArea.ondragover = (e)=>{
+            e.preventDefault();
+                e.dataTransfer.dropEffect = "move"; // 👈 זה חשוב!
+            dropArea.classList.add('hover');
+         }
+         dropArea.ondragleave = ()=>{
+            dropArea.classList.remove('hover');
+         }
+
+         dropArea.ondrop = (e)=>{
+            e.preventDefault();
+             const data = e.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(data);
+            draggedElement.remove();
+        
+        dropArea.replaceChildren();
+        dropArea.classList.remove('hover');
+
+        if (document.querySelectorAll('.draggable').length === 0) {
+        setTimeout(() => {
+            window.location.href = "finish.html"; // 👈 מעבר דף
+        }, 500);
+    }
+    };}
+    room.appendChild(items);
+
+}
 
 function nextPlace()
  {
      const opt = document.getElementById('options');
      opt.replaceChildren();
+
+     disableAndClearCircles();
+     if(loc!==3){
           const nextPlace = document.createElement('button');
           nextPlace.id = 'nextPlace';
-          nextPlace.textContent = 'משימה הושלמה!! שלב הבא!'
+          nextPlace.textContent = 'משימה הושלמה!! לחצו שלב הבא!'
           nextPlace.className = 'mission-btn';
 
           nextPlace.onclick = () => {
+            
              loc++;
              nextPlace.remove();
              showLocation(loc);
              };
           opt.appendChild(nextPlace);
-
+            }
+    else{
+         loc++;
+         showLocation(loc);
+        }
  }
+

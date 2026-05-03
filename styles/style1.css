@@ -69,7 +69,7 @@ body, html {
     cursor: pointer;
     z-index: 20;
     transition: transform 0.2s ease-in-out;
-    width: 300px;  /* שנה את המספר לפי הצורך */
+    width: 200px;  /* שנה את המספר לפי הצורך */
     height: auto;
     pointer-events: auto;
 
@@ -94,17 +94,17 @@ body, html {
     transform: scale(1.15);
 }
 /* מיקומים ספציפיים */
-#btn_0_1 { top: 23%;  left: 62%; }
-#btn_0_2 { top: -1%; left: 13%; }
+#btn_0_1 { top: 73%; left: 27%;}
+#btn_0_2 { top: 58%;left: 31%; }
 
 #btn_1_1 { top: -13%;  left: 54%; }
 #btn_1_2 { top: 34%; left: 55%; }
 
-#item_1 {top:55%; left:70%}
-#item_2 {top:60%; left:34%}
-#item_3 {top:47%; left:87%}
-#item_4 {top:81%; left:25%}
-#item_5 {top:29%; left:67%}
+#item_1 {top:59%; left:70%;}
+#item_2 {top: 48%;left: 36%;}
+#item_3 {top: 72%;left: 14%;}
+#item_4 {top: 59%; left: 50%;}
+#item_5 {top: 33%; left: 98%;}
 
 
 
@@ -145,14 +145,17 @@ body, html {
 /* הטופס עצמו */
 #mission1 {
     position: absolute;
-    top: 20px;     /* מרחק מהקצה העליון של התמונה */
-    right: 20px;   /* מרחק מהקצה הימני */
-    background: rgba(255, 255, 255, 0.9); /* רקע לבן חצי שקוף כדי שיהיה קריא */
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 100;  /* מבטיח שהטופס מעל התמונה */
-    max-width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    width: 385px;
+    height: 475px;
+    font-size: 25px;
+    /* max-width: 385px; */
     direction: rtl;
 }
 
@@ -164,25 +167,47 @@ body, html {
 #mission1 input {
     width: 100%;
     margin-bottom: 10px;
+    height: 30px;
 }
 
+button#submit_btn { /* החלף את submit-btn ב-ID או ב-class של הכפתור שלך */
+    padding: 15px 40px;    /* הגדלת הכפתור לרוחב ולגובה */
+    font-size: 22px;       /* הגדלת הטקסט */
+    font-weight: bold;     /* הדגשת הטקסט */
+    cursor: pointer;       /* הפיכת הסמן ליד */
+    background-color: #4CAF50; /* צבע ירוק (סתם הצעה, תוכל לשנות) */
+    color: white;          /* צבע טקסט לבן */
+    border: none;          /* הסרת המסגרת הסטנדרטית */
+    border-radius: 8px;    /* פינות מעוגלות */
+    transition: 0.3s;      /* אנימציה חלקה למעבר עכבר */
+}
+
+/* אפקט קטן כשעוברים עם העכבר */
+button#submit_btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* הגדלה קלה במעבר עכבר */
+}
 /* הכפתור שמופיע בהתחלה */
 .mission1-btn {
     position: absolute;
-    z-index: 150; /* מעל התמונה */
+    top: 2%;
+    right: 50%;
+    z-index: 150;
     padding: 15px 25px;
-    background-color: #f39c12;
+    background-color: #12f359;
     color: white;
-    border: none;
+    border: solid 6px;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    font-size: 1.1rem;
+    width: 287px;
+    height: 85px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.7rem;
 }
 
 .mission-btn:hover {
-    background-color: #e67e22;
+    background-color: #088a2b;
 }
 
 .mission-btn {
@@ -191,7 +216,7 @@ body, html {
     left:41%;
     z-index: 150; /* מעל התמונה */
     padding: 15px 25px;
-    background-color: #f39c12;
+    background-color: #12f359;
     color: white;
     border: none;
     border-radius: 8px;
@@ -202,7 +227,7 @@ body, html {
 }
 
 .mission-btn:hover {
-    background-color: #e67e22;
+    background-color: #088a2b;
 }
 
 #loading-screen {
@@ -233,4 +258,109 @@ body, html {
     /* אופציונלי: הופך את הזנב לקצת שקוף או מטשטש אותו אם רוצים להקשות */
     transition: transform 0.3s;
 }
+
+#dropArea {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    background-color: #f5f5f500;
+    font-size: 16px;
+    color: #333;
+    position: absolute;
+    z-index: 5;
+    right: 31%;
+    top: 14%;
+}
+
+
+/* האובייקט שנגרר */
+.draggable {
+    position: absolute;   /* 👈 חובה אם אתה משתמש ב-left/bottom */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 250px;
+    cursor: grab;
+    z-index: 5;
+}
+
+/* בזמן גרירה */
+.draggable:active {
+    cursor: grabbing;
+}
+/* אם יש כמה פריטים – שים אותם בשורה */
+/* .draggable:nth-child(2) { left: 30%; }
+.draggable:nth-child(3) { left: 50%; }
+.draggable:nth-child(4) { left: 70%; } */
+
+#room {
+    position: relative;
+    display: inline-block;
+}
+
+#items {
+    position: absolute;   /* מצמיד לצד הדף */
+    left: 8%;           /* מרחק מהקצה השמאלי */
+    top: 50%;
+    transform: translateY(-50%); /* ממרכז אנכית */
+    display: flex;
+    flex-direction: column; /* אחד מתחת לשני */
+    gap: 10px;   
+    z-index: 5;           /* רווח בין פריטים */
+}
+
+.click-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 4px solid #ff0000; /* אדום בולט */
+    border-radius: 50%;
+    pointer-events: none; /* חשוב: מאפשר להמשיך ללחוץ על אלמנטים מתחת לעיגול */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* הוספת הילה קלה למראה מקצועי */
+}
+
+/* עיצוב הבסיס לחיץ/אייקון */
+.btn-click, .clickable-icon {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.2s ease-in-out;
+    
+    /* הפעלת האנימציות: קפיצה וזוהר במקביל */
+    animation: jump 2s infinite ease-in-out, glow 1.5s infinite alternate;
+}
+
+/* אנימציית קפיצה */
+@keyframes jump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px); /* גובה הקפיצה */
+    }
+}
+
+/* אנימציית זוהר אדום */
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(255, 0, 0, 1));
+    }
+}
+
+/* אפקט קטן כשמעבירים את העכבר - הגדלה קלה */
+.btn-click:hover {
+    transform: scale(1.1);
+    animation-play-state: paused; /* מפסיק את הקפיצה כשנוגעים בלחצן */
+}
+
 
