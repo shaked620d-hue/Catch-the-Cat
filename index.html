@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter</title>
+    <script type="module" src="../script/start.js"></script>
+    <link rel="stylesheet" href="../styles/style3.css">
 </head>
+
 <body dir="rtl">
-    <h1>ברוכים הבאים למשחק הבלשים!</h1>
+    <h1>ברוכים הבאים למשחק מצא את החתול!</h1>
     <h2>כניסה למשחק</h2>
+    <img src="../images/image_03bd37.jpg" alt="חתול" style="width: 100px; border-radius: 50%; border: 3px solid #ffcb05;">
     <form>
 
         <label for="name">שם:</label>
-        <input type="text"  name="name" id="name" required> <br><br>
-        <label for="password">סיסמא:</label>
-        <input type="password" name="password" id="password"><br><br>
-        <input type="submit" value="כניסה" >
+        <input type="text" name="name" id="name" required> <br><br>
+        <label for="difficulty">בחר רמת קושי:</label>
+        <select id="difficulty" name="difficulty">
+            <option value="" disabled selected>בחר מהרשימה...</option>
+            <option value="easy">קל</option>
+            <option value="hard">קשה</option>
+        </select>
+        <input type="submit" id="submit" value="כניסה">
 
+        <button type="button" id="openBtn">הוראות</button>
+        <div id="modal" class="modal-overlay">
+            <div class="modal-box">
+                <button id="closeBtn" class="modal-close">X</button>
+                <h2>הוראות</h2>
+                <p>ברוכים הבאים למשחק המצא את החתול! עליכם לבצע את המשימות ע"מ להתקדם במשחק ולעבור בין החדרים. בכל חדר
+                    לחצו על החיצים האדומים האדומים הם מכילים משימות או הסברים כיצד לבצע את המשימה, בהצלחה!!!</p>
+            </div>
+        </div>
+        <script src="../script/instructions.js"></script>
     </form>
 </body>
+
 </html>
