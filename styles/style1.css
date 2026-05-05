@@ -191,42 +191,45 @@ button#submit_btn:hover {
 }
 /* הכפתור שמופיע בהתחלה */
 .mission1-btn {
-    position: absolute;
-    top: 2%;
+   position: absolute;
+    top: 43%;
     right: 50%;
     z-index: 150;
     padding: 15px 25px;
     background-color: #12f359;
-    color: white;
-    border: solid 6px;
-    border-radius: 8px;
+    /* color: white; */
+    /* border: solid 6px; */
+    border-radius: 50%;
     font-weight: bold;
     cursor: pointer;
     width: 287px;
     height: 85px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 .mission-btn:hover {
     background-color: #088a2b;
 }
 
-.mission-btn {
+/*.mission-btn {
     position: absolute;
-    top:50%;
-    left:41%;
-    z-index: 150; /* מעל התמונה */
+    top: 43%;
+    right: 50%;
+    z-index: 150;
     padding: 15px 25px;
     background-color: #12f359;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    /* color: white; */
+    /* border: solid 6px; */
+  /*  border-radius: 50%;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    font-size: 1.1rem;
-}
+    width: 287px;
+    height: 85px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.7rem;
+}*/
+
 
 .mission-btn:hover {
     background-color: #088a2b;

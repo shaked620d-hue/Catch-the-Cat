@@ -393,7 +393,7 @@ function nextPlace()
           const nextPlace = document.createElement('button');
           nextPlace.id = 'nextPlace';
           nextPlace.textContent = 'משימה הושלמה!! לחצו שלב הבא!'
-          nextPlace.className = 'mission-btn';
+          nextPlace.className = 'mission1-btn';
 
           nextPlace.onclick = () => {
             
