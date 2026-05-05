@@ -8,7 +8,7 @@ export const textsForlocations = [
         missionItems: [
     {
         question: "כמה חיפושיות יש בגינה?",
-        correctAnswer: "8",
+        correctAnswer: "7",
     },
     {
         question: "כמה פטריות יש בגינה?",
@@ -39,15 +39,15 @@ export const textsForlocations = [
     },
     {
         id: 3,
-        text: "הקשב!!! יש יללות חתול! המשימה עכשיו למצוא את החתלתול!",
+        text: "הגעת לחדר האחרון!! המשימה עכשיו לתפוס את החתול",
         src:'../images/bedRoom.png',
         buttensSrc: [],
-        btnSrc: "../images/tail.png",
+        btnSrc: "../images/cat.png",
         missionItems:[]
     },
     {
         id:4,
-        text: "כל הכבוד! מצאתם את החתול עכשיו תוכלו להאכיל אותו",
+        text: "כל הכבוד! הצלחת! עכשיו תוכלו להאכיל את החתול!!",
         src: "../images/find.png",
         buttensSrc:[],
         food: ["../images/fish.png"]
@@ -162,7 +162,7 @@ function taskManagement()
  }
 
   function mission1_quiz()
- {  
+ {  initMultipleCircles();
     const opt = document.getElementById('options');
     const missionBtn = document.createElement('button');
     const form = document.createElement('form');
@@ -209,7 +209,64 @@ function taskManagement()
     }
  }
 
+/**
+ * פונקציה המפעילה מאזין ללחיצות על המסך ליצירת/הסרת עיגול רמז
+ */
+ /**
+ * פונקציה המאפשרת יצירת אינספור עיגולי רמז על המסך.
+ * לחיצה על המסך = יצירת עיגול.
+ * לחיצה כפולה על עיגול ספציפי = מחיקתו.
+ */
+// משתנה גלובלי שיאפשר לנו לבטל את פעולת הלחיצות מאוחר יותר
+let circleAbortController = null;
 
+ function initMultipleCircles() {
+    // אם הפונקציה נקראת שוב, נבטל את המאזין הקודם כדי למנוע כפילויות
+    if (circleAbortController) circleAbortController.abort();
+    
+    circleAbortController = new AbortController();
+    const { signal } = circleAbortController;
+
+    const room = document.getElementById('room');
+
+    // הוספת המאזין עם ה-signal שמאפשר ביטול
+    room.addEventListener('click', function(e) {
+        // בדיקה: האם הלחיצה בוצעה ישירות על תמונת הרקע (שיש לה class בשם mainImg)
+        if (e.target.classList.contains('mainImg')) {
+            
+            const circle = document.createElement('div');
+            circle.className = 'click-circle';
+            
+            // הגדרת מיקום העיגול
+            circle.style.left = e.pageX + 'px';
+            circle.style.top = e.pageY + 'px';
+            
+            // מחיקה בלחיצה אחת על העיגול עצמו
+            circle.style.pointerEvents = 'auto'; 
+            circle.onclick = (event) => {
+                event.stopPropagation(); // מונע יצירת עיגול חדש מתחתיו ברגע המחיקה
+                circle.remove();
+            };
+
+            document.body.appendChild(circle);
+        }
+    }, { signal }); // הקישור לסיגנל הביטול
+}
+
+/**
+ * פונקציה שמנקה את כל העיגולים מהמסך ומבטלת את האפשרות לצייר חדשים
+ */
+ function disableAndClearCircles() {
+    // 1. מחיקת כל העיגולים הקיימים מה-DOM
+    const existingCircles = document.querySelectorAll('.click-circle');
+    existingCircles.forEach(c => c.remove());
+
+    // 2. ביטול המאזין - מהרגע הזה, לחיצות על הרקע לא יצרו יותר עיגולים
+    if (circleAbortController) {
+        circleAbortController.abort();
+        circleAbortController = null;
+    }
+}
 
 
  function mission2_collect()
@@ -240,18 +297,36 @@ function taskManagement()
     }
 
           function  mission3_find()
-      {
+      {      let catchCat = false;        
              const opt = document.getElementById('options');
                 let btnImg = document.createElement('img');
                 btnImg.src=textsForlocations[loc-1].btnSrc;
-                btnImg.id = 'tail';
-                btnImg.className = 'find-tail'; // קלאס חדש ל-CSS
-                opt.appendChild(btnImg);
+                btnImg.id = 'cat';
+                btnImg.className = 'catch-cat';
+               opt.appendChild(btnImg);
 
                 btnImg.onclick=()=>{
-                    nextPlace();
+                    catchCat = true;
+                    console.log('נלחץ')
                 }
 
+                
+            let timer1;
+              const catching = () => {
+                  if (!catchCat) {
+                      btnImg.style.top = `${Math.floor(Math.random() * 100) + 20}%`
+                      btnImg.style.left = `${Math.floor(Math.random() * 91) + 10}%`
+                      timer1 = setTimeout(catching, 900);
+              }
+              else{
+                  nextPlace();
+              }
+            }
+
+              clearTimeout(timer1);
+              catching();
+
+               
       }
 
 
