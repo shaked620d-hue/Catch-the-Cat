@@ -1,56 +1,60 @@
-ody {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #fceabb, #f8b500);
-    direction: rtl;
-}
-
-/* מרכז הכל */
-.end-screen {
-    height: 100vh;
+/* עיצוב המכולה שעוטפת את הטבלה כדי למרכז אותה */
+#high-scores-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
 }
 
-/* כותרת */
-.end-screen h1 {
-    font-size: 48px;
-    color: #333;
-    margin-bottom: 20px;
-    animation: pop 1s ease;
+/* עיצוב הטבלה עצמה */
+.high-scores-table {
+    width: 100%;
+    border-collapse: separate; /* מאפשר גבולות מעוגלים */
+    border-spacing: 0;
+    background-color: rgba(255, 255, 255, 0.85); /* לבן חצי שקוף לקריאות מקסימלית */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* צל עדין שנותן עומק */
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* טקסט */
-.end-screen p {
-    font-size: 22px;
-    color: #555;
-    margin-bottom: 40px;
-}
-
-.end-screen button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background: #ff9800;
+/* עיצוב שורת הכותרת */
+.high-scores-table thead {
+    background-color: #62b365; /* הירוק מהכותרת שלך */
     color: white;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-.end-screen button:hover {
-    background: #e68900;
-    transform: scale(1.05);
+.high-scores-table th {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
 }
 
-/* אנימציה */
-@keyframes pop {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+/* עיצוב התאים (שורות הנתונים) */
+.high-scores-table td {
+    padding: 15px;
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* הוספת צבע שונה לשורות זוגיות (Zebra Stripes) */
+.high-scores-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* הדגשת השורה במעבר עכבר */
+.high-scores-table tbody tr:hover {
+    background-color: rgba(98, 179, 101, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* עיצוב המקום הראשון (זהב עדין) */
+.high-scores-table tbody tr:first-child td:first-child {
+    font-weight: bold;
+    color: #d4af37;
 }

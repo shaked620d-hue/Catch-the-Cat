@@ -8,3 +8,6 @@ else{
      h1.textContent = `!!!כל הכבוד סיימתם את המשחק`
      localStorage.removeItem('finishedLevels');
 }
+
+
+

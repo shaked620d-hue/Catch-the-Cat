@@ -1,5 +1,6 @@
 // data.js
 const currentLevel = localStorage.getItem('gameLevel') || 'קל';
+const playerName = localStorage.getItem('playerName') || 'שחקן אנונימי';
 export const textsForlocations = [
     {
         id: 1,
@@ -66,6 +67,8 @@ if (currentLevel === 'hard') {
 else {
     timeLeft = 240;
 }
+
+
 
 function startGameTimer() {
     const timerDisplay = document.createElement('div');
@@ -417,6 +420,7 @@ function mission4_drag() {
                     clearInterval(gameTimer);
                     counterLevels++;
                     localStorage.setItem('finishedLevels', counterLevels); // שמירה
+                    saveHighScore(playerName, timeLeft);
                     window.location.href = "finish.html"; // 👈 מעבר דף
                 }, 500);
             }
@@ -424,6 +428,39 @@ function mission4_drag() {
     }
     room.appendChild(items);
 
+}
+
+// פונקציה לשמירת שיא חדש
+function saveHighScore(playerName, timeLeft) {
+    // 1. שליפת הטבלה הקיימת מהזיכרון או יצירת מערך ריק אם אין כזה
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    let time = 0;
+    if(currentLevel=='hard')
+        time = (120-timeLeft)/60;
+    else time = (240-timeLeft)/60;
+
+    time = Number(time.toFixed(2));    // 2. יצירת אובייקט לתוצאה החדשה
+    const newScore = {
+        name: playerName,
+        score: time,
+        level: currentLevel
+    };
+
+    // 3. הוספה למערך, מיון מהגבוה לנמוך, וחיתוך ל-5 הטובים ביותר
+    highScores.push(newScore);
+highScores.sort((a, b) => {
+    // 1. מיון לפי רמה (אלפביתי - "קשה" יופיע לפני "קל")
+    if (a.level !== b.level) {
+        return b.level.localeCompare(a.level); 
+    } 
+    // 2. אם הרמה זהה, מיון לפי הניקוד מהגבוה לנמוך
+    return b.score - a.score;
+});  
+ // highScores = highScores.slice(0, 5); // שומרים רק את ה-5 הראשונים
+
+    // 4. שמירה חזרה ב-localStorage
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
 function nextPlace() {
