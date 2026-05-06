@@ -58,3 +58,34 @@
     font-weight: bold;
     color: #d4af37;
 }
+
+@media (min-width: 1400px) {
+    #high-scores-container {
+        max-width: 1000px; /* הגדלת רוחב המכולה */
+    }
+
+    .high-scores-table th {
+        font-size: 28px;
+        padding: 25px;
+    }
+
+    .high-scores-table td {
+        font-size: 26px;
+        padding: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    #high-scores-container {
+        width: 95%;
+    }
+
+    .high-scores-table th {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .high-scores-table td {
+        font-size: 18px;
+        padding: 12px;
+    }
+}

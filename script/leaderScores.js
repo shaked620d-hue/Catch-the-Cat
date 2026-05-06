@@ -47,5 +47,4 @@ function displayHighScores() {
 
     table.appendChild(tbody);
     container.appendChild(table);
-    localStorage.removeItem('highScores')
 }

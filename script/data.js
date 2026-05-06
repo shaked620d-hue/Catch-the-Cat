@@ -460,7 +460,7 @@ highScores.sort((a, b) => {
         return b.level.localeCompare(a.level); 
     } 
     // 2. אם הרמה זהה, מיון לפי הניקוד מהגבוה לנמוך
-    return b.score - a.score;
+    return a.score - b.score;
 });  
  // highScores = highScores.slice(0, 5); // שומרים רק את ה-5 הראשונים
 

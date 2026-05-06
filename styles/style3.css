@@ -26,9 +26,10 @@
   text-align: center;
   font-size: 45px;
   & h2 {
-    color: darkblue;
+    color: rgb(2, 90, 9);
         font-weight: bold;
         margin-bottom: 0;
+        margin-top: 0;
   }
   & p {
             margin-top: 0;
@@ -89,23 +90,26 @@ h2 {
 
 /* טופס גדול ומרווח יותר */
 form {
-    background-color: rgba(255, 255, 255, 0.92);
-    padding: 40px; /* הגדלת המרווח הפנימי */
+  background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    width: 400px; /* הגדלת רוחב הטופס */
+    width: 90%; /* גמישות למובייל */
+    max-width: 450px; /* גודל אידיאלי למחשב נייח */
     text-align: center;
     border: 3px solid #a5d6a7;
+    box-sizing: border-box; /* חשוב מאוד למניעת חריגת רוחב */
 }
 
 /* שדות קלט גדולים */
 input[type="text"], select {
-    width: 87%;
+    width: 100%; /* תופס את כל רוחב הפורם */
+    box-sizing: border-box;
     padding: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border: 2px solid #ddd;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 1.1rem;
 }
 
 /* כפתור כניסה */
@@ -173,4 +177,33 @@ input[type="text"], select {
     min-height: 300px;
     width: 100%;
     gap: 20px; /* זה יוסיף רווח של 20 פיקסלים בין כל אלמנט */
+}
+@media (min-width: 1400px) {
+    form, .end-screen {
+        padding: 50px;
+    }
+
+    .modal-box {
+        max-width: 800px; /* המודאל יתפרס יותר לרוחב */
+        padding: 40px;
+    }
+
+   
+
+}
+@media (max-width: 1024px) {
+    form {
+        width: 80%; /* תופס יותר מקום מהרוחב בטאבלט */
+        padding: 30px;
+    }
+
+    .modal-box {
+        width: 70%;
+        font-size: 30px; /* הקטנת טקסט המודאל שיתאים למסך */
+    }
+
+    .btns {
+        padding: 12px 30px;
+        font-size: 18px;
+    }
 }
