@@ -1,11 +1,12 @@
 /* איפוס בסיסי וביטול גלילה */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-   /* background-color: black; /* מונע הבזק לבן בטעינה */
+    /* background-color: black; /* מונע הבזק לבן בטעינה */
 }
 
 /* המכולה הראשית של החדר */
@@ -18,13 +19,15 @@ body, html {
 }
 
 /* תמונת הרקע - פריסה מלאה */
-#mainImg, .mainImg { 
+#mainImg,
+.mainImg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* מבטיח מילוי מלא של המסך גם אם היחס משתנה */
+    object-fit: cover;
+    /* מבטיח מילוי מלא של המסך גם אם היחס משתנה */
     z-index: 1;
 }
 
@@ -44,67 +47,115 @@ body, html {
     font-size: 1.2rem;
     z-index: 10;
     margin: 0;
-    pointer-events: none; /* מאפשר ללחוץ על דברים שנמצאים מאחורי הטקסט */
+    pointer-events: none;
+    /* מאפשר ללחוץ על דברים שנמצאים מאחורי הטקסט */
     white-space: pre-wrap;
 }
 
 #counter_p {
-    position: absolute;      /* נשאר במקום גם אם גוללים */
-    top: 3%;           /* מרחק מהקצה העליון */
-    right: 85%;         /* מרחק מהקצה הימני */
-    background-color: rgba(255, 255, 255, 0.751); /* רקע כהה שקוף */
-    color: black;        /* טקסט לבן */
-    padding: 10px 20px;  /* ריווח פנימי */
-    border-radius: 50px; /* פינות עגולות */
+    position: absolute;
+    /* נשאר במקום גם אם גוללים */
+    top: 8%;
+    /* מרחק מהקצה העליון */
+    right: 87%;
+    font-size: 20px;
+    /* מרחק מהקצה הימני */
+    background-color: rgba(255, 255, 255, 0.751);
+    /* רקע כהה שקוף */
+    color: black;
+    /* טקסט לבן */
+    padding: 10px 20px;
+    /* ריווח פנימי */
+    border-radius: 50px;
+    /* פינות עגולות */
     font-family: Arial, sans-serif;
     font-weight: bold;
-    z-index: 1000;       /* מוודא שזה יהיה מעל הכל */
-    direction: rtl;      /* יישור טקסט לימין */
-    margin: 0;           /* ביטול שוליים דיפולטיביים של p */
+    z-index: 1000;
+    /* מוודא שזה יהיה מעל הכל */
+    direction: rtl;
+    /* יישור טקסט לימין */
+    margin: 0;
+    /* ביטול שוליים דיפולטיביים של p */
 }
 
 /* אלמנטים לחיצים (חצים/אייקונים) - איחוד מחלקות */
-.btn-click, .clickable-icon {
+.btn-click,
+.clickable-icon {
     position: absolute;
     cursor: pointer;
     z-index: 20;
     transition: transform 0.2s ease-in-out;
-    width: 200px;  /* שנה את המספר לפי הצורך */
+    width: 200px;
+    /* שנה את המספר לפי הצורך */
     height: auto;
     pointer-events: auto;
 
 }
 
-.btn-click:hover, .clickable-icon:hover {
+.btn-click:hover,
+.clickable-icon:hover {
     transform: scale(1.15);
 }
 
-.item-click, .clickable-icon {
+.item-click,
+.clickable-icon {
     position: absolute;
     cursor: pointer;
     z-index: 20;
     transition: transform 0.2s ease-in-out;
-    width: 50px;  /* שנה את המספר לפי הצורך */
+    width: 50px;
+    /* שנה את המספר לפי הצורך */
     height: auto;
     pointer-events: auto;
 
 }
 
-.item-click:hover, .clickable-icon:hover {
+.item-click:hover,
+.clickable-icon:hover {
     transform: scale(1.15);
 }
+
 /* מיקומים ספציפיים */
-#btn_0_1 { top: 73%; left: 27%;}
-#btn_0_2 { top: 58%;left: 31%; }
+#btn_0_1 {
+    top: 73%;
+    left: 27%;
+}
 
-#btn_1_1 { top: -13%;  left: 54%; }
-#btn_1_2 { top: 34%; left: 55%; }
+#btn_0_2 {
+    top: 58%;
+    left: 31%;
+}
 
-#item_1 {top:59%; left:70%;}
-#item_2 {top: 48%;left: 36%;}
-#item_3 {top: 72%;left: 14%;}
-#item_4 {top: 59%; left: 50%;}
-#item_5 {top: 33%; left: 98%;}
+#btn_1_1 {
+    top: 43%;
+    left: 75%;
+}
+
+#item_1 {
+    top: 59%;
+    left: 70%;
+}
+
+#item_2 {
+    top: 48%;
+    left: 36%;
+}
+
+#item_3 {
+    top: 72%;
+    left: 14%;
+}
+
+#item_4 {
+    top: 59%;
+    left: 50%;
+}
+
+#item_5 {
+    top: 14%;
+    left: 91%;
+    width: 100px;
+}
 
 
 
@@ -126,17 +177,19 @@ body, html {
 #overlay img {
     max-width: 90%;
     max-height: 90%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 
 #options {
-    position: absolute; /* שנה מ-relative ל-absolute */
+    position: absolute;
+    /* שנה מ-relative ל-absolute */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events:all; /* מאפשר לחיצה על מה שמתחת, אלא אם זה אלמנט פעיל */
+    pointer-events: all;
+    /* מאפשר לחיצה על מה שמתחת, אלא אם זה אלמנט פעיל */
 }
 
 /* ודא שהכפתורים עצמם מחזירים לעצמם את יכולת הלחיצה */
@@ -172,26 +225,38 @@ body, html {
     text-align: center;
 }
 
-button#submit_btn { /* החלף את submit-btn ב-ID או ב-class של הכפתור שלך */
-    padding: 15px 40px;    /* הגדלת הכפתור לרוחב ולגובה */
-    font-size: 22px;       /* הגדלת הטקסט */
-    font-weight: bold;     /* הדגשת הטקסט */
-    cursor: pointer;       /* הפיכת הסמן ליד */
-    background-color: #4CAF50; /* צבע ירוק (סתם הצעה, תוכל לשנות) */
-    color: white;          /* צבע טקסט לבן */
-    border: none;          /* הסרת המסגרת הסטנדרטית */
-    border-radius: 8px;    /* פינות מעוגלות */
-    transition: 0.3s;      /* אנימציה חלקה למעבר עכבר */
+button#submit_btn {
+    /* החלף את submit-btn ב-ID או ב-class של הכפתור שלך */
+    padding: 15px 40px;
+    /* הגדלת הכפתור לרוחב ולגובה */
+    font-size: 22px;
+    /* הגדלת הטקסט */
+    font-weight: bold;
+    /* הדגשת הטקסט */
+    cursor: pointer;
+    /* הפיכת הסמן ליד */
+    background-color: #4CAF50;
+    /* צבע ירוק (סתם הצעה, תוכל לשנות) */
+    color: white;
+    /* צבע טקסט לבן */
+    border: none;
+    /* הסרת המסגרת הסטנדרטית */
+    border-radius: 8px;
+    /* פינות מעוגלות */
+    transition: 0.3s;
+    /* אנימציה חלקה למעבר עכבר */
 }
 
 /* אפקט קטן כשעוברים עם העכבר */
 button#submit_btn:hover {
     background-color: #45a049;
-    transform: scale(1.05); /* הגדלה קלה במעבר עכבר */
+    transform: scale(1.05);
+    /* הגדלה קלה במעבר עכבר */
 }
+
 /* הכפתור שמופיע בהתחלה */
 .mission1-btn {
-   position: absolute;
+    position: absolute;
     top: 43%;
     right: 50%;
     z-index: 150;
@@ -220,8 +285,8 @@ button#submit_btn:hover {
     padding: 15px 25px;
     background-color: #12f359;
     /* color: white; */
-    /* border: solid 6px; */
-  /*  border-radius: 50%;
+/* border: solid 6px; */
+/*  border-radius: 50%;
     font-weight: bold;
     cursor: pointer;
     width: 287px;
@@ -241,25 +306,28 @@ button#submit_btn:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff; /* או שחור, מה שמתאים למשחק */
+    background-color: #ffffff;
+    /* או שחור, מה שמתאים למשחק */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* הכי גבוה שיש */
+    z-index: 9999;
+    /* הכי גבוה שיש */
 }
 
-.catch-cat{
+.catch-cat {
     position: absolute;
-    
+
     /* שחקי עם המספרים האלו כדי למקם את הזנב בתוך המטבח/חדר */
-    top: 82%;  
-    left: 20%; 
-    
-    width: 250px; 
+    top: 82%;
+    left: 20%;
+
+    width: 250px;
     height: auto;
     cursor: pointer;
-    z-index: 10; /* מוודא שזה מעל תמונת הרקע */
-    
+    z-index: 10;
+    /* מוודא שזה מעל תמונת הרקע */
+
     /* אופציונלי: הופך את הזנב לקצת שקוף או מטשטש אותו אם רוצים להקשות */
     transition: transform 0.3s;
 }
@@ -282,12 +350,13 @@ button#submit_btn:hover {
 
 /* האובייקט שנגרר */
 .draggable {
-    position: absolute;   /* 👈 חובה אם אתה משתמש ב-left/bottom */
-    bottom: 10px;
+    position: absolute;
+    /* 👈 חובה אם אתה משתמש ב-left/bottom */
+    bottom: -34px;
     left: 50%;
     transform: translateX(-50%);
 
-    width: 250px;
+    width: 300px;
     cursor: grab;
     z-index: 5;
 }
@@ -296,6 +365,7 @@ button#submit_btn:hover {
 .draggable:active {
     cursor: grabbing;
 }
+
 /* אם יש כמה פריטים – שים אותם בשורה */
 /* .draggable:nth-child(2) { left: 30%; }
 .draggable:nth-child(3) { left: 50%; }
@@ -307,46 +377,59 @@ button#submit_btn:hover {
 }
 
 #items {
-    position: absolute;   /* מצמיד לצד הדף */
-    left: 8%;           /* מרחק מהקצה השמאלי */
+    position: absolute;
+    /* מצמיד לצד הדף */
+    left: 8%;
+    /* מרחק מהקצה השמאלי */
     top: 50%;
-    transform: translateY(-50%); /* ממרכז אנכית */
+    transform: translateY(-50%);
+    /* ממרכז אנכית */
     display: flex;
-    flex-direction: column; /* אחד מתחת לשני */
-    gap: 10px;   
-    z-index: 5;           /* רווח בין פריטים */
+    flex-direction: column;
+    /* אחד מתחת לשני */
+    gap: 10px;
+    z-index: 5;
+    /* רווח בין פריטים */
 }
 
 .click-circle {
     position: absolute;
     width: 60px;
     height: 60px;
-    border: 4px solid #ff0000; /* אדום בולט */
+    border: 4px solid #ff0000;
+    /* אדום בולט */
     border-radius: 50%;
-    pointer-events: none; /* חשוב: מאפשר להמשיך ללחוץ על אלמנטים מתחת לעיגול */
+    pointer-events: none;
+    /* חשוב: מאפשר להמשיך ללחוץ על אלמנטים מתחת לעיגול */
     transform: translate(-50%, -50%);
     z-index: 9999;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* הוספת הילה קלה למראה מקצועי */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    /* הוספת הילה קלה למראה מקצועי */
 }
 
 /* עיצוב הבסיס לחיץ/אייקון */
-.btn-click, .clickable-icon {
+.btn-click,
+.clickable-icon {
     position: absolute;
     cursor: pointer;
     z-index: 20;
     transition: transform 0.2s ease-in-out;
-    
+
     /* הפעלת האנימציות: קפיצה וזוהר במקביל */
     animation: jump 2s infinite ease-in-out, glow 1.5s infinite alternate;
 }
 
 /* אנימציית קפיצה */
 @keyframes jump {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-20px); /* גובה הקפיצה */
+        transform: translateY(-20px);
+        /* גובה הקפיצה */
     }
 }
 
@@ -355,6 +438,7 @@ button#submit_btn:hover {
     from {
         filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6));
     }
+
     to {
         filter: drop-shadow(0 0 20px rgba(255, 0, 0, 1));
     }
@@ -363,7 +447,22 @@ button#submit_btn:hover {
 /* אפקט קטן כשמעבירים את העכבר - הגדלה קלה */
 .btn-click:hover {
     transform: scale(1.1);
-    animation-play-state: paused; /* מפסיק את הקפיצה כשנוגעים בלחצן */
+    animation-play-state: paused;
+    /* מפסיק את הקפיצה כשנוגעים בלחצן */
 }
 
+#game-timer {
+    font-family: 'Arial', sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border-radius: 8px;
+    position: fixed;
+    top: 2%;
+    right: 87%;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.715);
+    padding: 10px;
+    /*border: 2px solid black;*/
+    z-index: 1000;
 
+}
