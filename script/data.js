@@ -204,6 +204,7 @@ function mission1_quiz() {
     const form = document.createElement('form');
     form.id = 'mission1'
 
+  
     for (let i = 0; i < textsForlocations[loc - 1].missionItems.length; i++) {
         const label = document.createElement('label');
         label.textContent = textsForlocations[loc - 1].missionItems[i].question;
@@ -223,7 +224,6 @@ function mission1_quiz() {
     submitBtn.id = "submit_btn";
     submitBtn.textContent = 'שלח תשובה';
     form.appendChild(submitBtn);
-
     opt.appendChild(form);
     form.onsubmit = (e) => {
         e.preventDefault();
@@ -232,7 +232,12 @@ function mission1_quiz() {
             const answer = document.getElementById(`answer-input_${i + 1}`);
             if (answer.value !== textsForlocations[loc - 1].missionItems[i].correctAnswer) {
                 correct = false;
-                break;
+                // הוספת מסגרת אדומה לשדה השגוי
+                answer.style.border = '2px solid red';
+               break;
+            }
+            else{
+                answer.style.border = '1px solid #ddd'; // החזרה למצב רגיל אם תקין
             }
         }
         if (correct) {
