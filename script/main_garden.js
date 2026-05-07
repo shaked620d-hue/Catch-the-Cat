@@ -1,8 +1,14 @@
-import { textsForlocations,showLocation } from './data.js';
+import { locations,showLocation } from './data.js';
 
 let currentLocationId;
 let start = false;
-
+/**
+ * מפעיל מוזיקת רקע עם טעינת הדף.
+ * 
+ * המנגינה מופעלת בלולאה אינסופית.
+ * אם הדפדפן חוסם השמעה אוטומטית,
+ * ההשמעה תופעל בלחיצה הראשונה של המשתמש על המסך.
+ */
 //הפעלת מנגינת רקע בעת הפעלת המשחק
 window.addEventListener('DOMContentLoaded', (event) => {
     const backgroundMusic = new Audio('../sound/sound.mp3');
@@ -15,6 +21,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+/**
+ * מתחיל את המשחק.
+ * 
+ * הפונקציה:
+ * - מאפסת את מזהה המיקום הנוכחי
+ * - מעדכנת שהמשחק התחיל
+ * - מציגה את המיקום הראשון במשחק
+ */
 /*פונקציית התחלת המשחק מאפסת את המשתנים וקוראת לפונקציית טעינת מראה המיקום */
  function startGame() {
     currentLocationId = 1;

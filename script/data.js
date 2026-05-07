@@ -413,6 +413,7 @@ function mission3_find() {
     let timer1;
     const catching = () => {
         if (!catchCat) {
+            //הגרלת מיקומים
             btnImg.style.top = `${Math.floor(Math.random() * 100) + 20}%`
             btnImg.style.left = `${Math.floor(Math.random() * 91) + 10}%`
             if (currentLevel === 'hard')
@@ -536,11 +537,13 @@ function saveHighScore(playerName, timeLeft) {
         // 2. אם הרמה זהה, מיון לפי הניקוד מהגבוה לנמוך
         return a.score - b.score;
     });
+    //פונקצית פילטר
+    //שומר רק את ה 7 הראשונים
+    const topScores = highScores.filter((score, index) => index < 7);
 
-   // highScores = highScores.slice(0, 5); // שומרים רק את ה-5 הראשונים
 
     // 4. שמירה חזרה ב-localStorage
-    localStorage.setItem('highScores', JSON.stringify(highScores));
+    localStorage.setItem('highScores', JSON.stringify(topScores));
 }
 
 
