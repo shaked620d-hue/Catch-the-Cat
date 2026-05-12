@@ -206,7 +206,7 @@ html {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 100;
     width: 330px;
-    height: 376px;
+    height: 411px;
     font-size: 25px;
     /* max-width: 385px; */
     direction: rtl;
@@ -217,41 +217,77 @@ html {
     margin-top: 5px;
 }
 
+/* הטופס עצמו */
+#mission1 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* הוספת צבע רקע חלופי ל-IE שלא תומך ב-rgba */
+    background-color: #ffffff; 
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    /* צל עם קידומות לדפדפנים ישנים */
+    -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    width: 330px;
+    height: 411px;
+    font-size: 25px;
+    direction: rtl;
+    /* הבטחה שהגדלים כוללים את הפאדינג והבורדר */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 #mission1 input {
     width: 100%;
     margin-bottom: 10px;
-    height: 25px;
+    height: 35px; /* הגדלתי מעט כדי שייראה טוב יותר עם פונט 20px */
     font-size: 20px;
     text-align: center;
+    /* נטרול עיצוב ברירת מחדל של דפדפנים */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 button#submit_btn {
-    /* החלף את submit-btn ב-ID או ב-class של הכפתור שלך */
+    display: inline-block;
     padding: 15px 40px;
-    /* הגדלת הכפתור לרוחב ולגובה */
     font-size: 15px;
-    /* הגדלת הטקסט */
     font-weight: bold;
-    /* הדגשת הטקסט */
     cursor: pointer;
-    /* הפיכת הסמן ליד */
     background-color: #4CAF50;
-    /* צבע ירוק (סתם הצעה, תוכל לשנות) */
     color: white;
-    /* צבע טקסט לבן */
     border: none;
-    /* הסרת המסגרת הסטנדרטית */
     border-radius: 8px;
-    /* פינות מעוגלות */
-    transition: 0.3s;
-    /* אנימציה חלקה למעבר עכבר */
+    /* מעברים חלקים */
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    /* הבטחה שהטקסט יהיה מיושר למרכז */
+    text-align: center;
+    vertical-align: middle;
+    width: 95%;
 }
 
-/* אפקט קטן כשעוברים עם העכבר */
+/* אפקט מעבר עכבר */
 button#submit_btn:hover {
     background-color: #45a049;
+    /* הגדלה עם תמיכה רחבה */
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05); /* תמיכה ב-IE9 */
+    -o-transform: scale(1.05);
     transform: scale(1.05);
-    /* הגדלה קלה במעבר עכבר */
 }
 
 /* הכפתור שמופיע בהתחלה */
