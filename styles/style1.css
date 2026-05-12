@@ -205,8 +205,8 @@ html {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 100;
-    width: 385px;
-    height: 475px;
+    width: 330px;
+    height: 376px;
     font-size: 25px;
     /* max-width: 385px; */
     direction: rtl;
@@ -220,8 +220,8 @@ html {
 #mission1 input {
     width: 100%;
     margin-bottom: 10px;
-    height: 30px;
-    font-size: 30px;
+    height: 25px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -229,7 +229,7 @@ button#submit_btn {
     /* החלף את submit-btn ב-ID או ב-class של הכפתור שלך */
     padding: 15px 40px;
     /* הגדלת הכפתור לרוחב ולגובה */
-    font-size: 22px;
+    font-size: 15px;
     /* הגדלת הטקסט */
     font-weight: bold;
     /* הדגשת הטקסט */
