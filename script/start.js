@@ -21,7 +21,8 @@ startBtn.addEventListener('click',(event)=>{
         localStorage.setItem('gameLevel',level);
         localStorage.setItem('playerName',name);
 // מעבר דף עם Query Parameters  
-        window.location.href = `pages/catchTheCat.html?level=${level}&name=${encodeURIComponent(name)}`;    }
+        window.location.href = `pages/catchTheCat.html?level=${level}&name=${encodeURIComponent(name)}`; }
+        
     else{
         form.reportValidity();
     }
