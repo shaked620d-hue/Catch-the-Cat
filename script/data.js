@@ -2,6 +2,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const currentLevel = localStorage.getItem('gameLevel') || 'easy';
 const playerName = localStorage.getItem('playerName') || 'שחקן אנונימי';
+
 export const locations = [
     {
         id: 1,
@@ -59,8 +60,8 @@ export const locations = [
     }
 ];
 
-let gameTimer;
-let timeLeft;
+let gameTimer; //זמן המשחק
+let timeLeft; //זמן שנשאר
 let timerWork = false;
 if (currentLevel === 'hard') {
     timeLeft = 120;
@@ -233,19 +234,25 @@ function taskManagement() {
  * @requires nextPlace - פונקציה למעבר לשלב הבא.
  */
 function mission1_quiz() {
+
+    //קריאה לפונקציה שמאפשרת יצירת עיגולים על המסך סביב מקום הלחיצה
     initMultipleCircles();
+
     const opt = document.getElementById('options');
+    //יצירת כפתור
     const missionBtn = document.createElement('button');
+    //יצירת טופס
     const form = document.createElement('form');
     form.id = 'mission1'
 
-
+ //יצירת האלמנטים של הטופס
     for (let i = 0; i < locations[loc - 1].missionItems.length; i++) {
+        //תווית
         const label = document.createElement('label');
         label.textContent = locations[loc - 1].missionItems[i].question;
         label.style.display = 'block';
         form.appendChild(label);
-
+        //תיבת הקלט
         const input = document.createElement('input');
         input.type = 'number';
         input.id = `answer-input_${i + 1}`;
@@ -253,16 +260,18 @@ function mission1_quiz() {
         input.required = true;
         form.appendChild(input);
     }
-
+    //כפתור השליחה
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
     submitBtn.id = "submit_btn";
     submitBtn.textContent = 'שלח תשובה';
     form.appendChild(submitBtn);
     opt.appendChild(form);
+    //הגדרת פעולה בעת לחיצה על שליחה
     form.onsubmit = (e) => {
         e.preventDefault();
         let correct = true;
+        //בדיקת תקינות
         for (let i = 0; i < locations[loc - 1].missionItems.length; i++) {
             const answer = document.getElementById(`answer-input_${i + 1}`);
             if (answer.value !== locations[loc - 1].missionItems[i].correctAnswer) {
@@ -275,6 +284,7 @@ function mission1_quiz() {
                 answer.style.border = '1px solid #ddd'; // החזרה למצב רגיל אם תקין
             }
         }
+        //סיום המשימה
         if (correct) {
             counterLevels++;
             localStorage.setItem('finishedLevels', counterLevels); // שמירה

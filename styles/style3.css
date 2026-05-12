@@ -52,7 +52,7 @@
 
 /* הגדרות רקע ומרכוז */
 body {
-    background-image: url('images/startIMG.png');
+    background-image: url('../images/startIMG.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
