@@ -21,6 +21,10 @@ else{
 
 // שחק שוב
 document.getElementById('playAgainBtn').addEventListener('click', () => {
+    window.location.href = 'catchTheCat.html';
+});
+
+document.getElementById('comebake').addEventListener('click', () => {
     window.location.href = '../index.html';
 });
 
