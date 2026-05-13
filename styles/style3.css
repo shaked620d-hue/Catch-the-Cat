@@ -146,6 +146,19 @@ input[type="text"], select {
     min-width: 150px;
     transition: background 0.3s;
 }
+#scores {
+    background-color: #ffb300;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px; /* הופך אותו למעוגל לגמרי בצדדים */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto; /* מאפשר לו להיות בגודל הטקסט */
+    min-width: 150px;
+    transition: background 0.3s;
+}
 
 #openBtn:hover {
     background-color: #ff8f00;

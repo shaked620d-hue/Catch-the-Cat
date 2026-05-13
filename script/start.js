@@ -17,13 +17,18 @@ startBtn.addEventListener('click',(event)=>{
     if(form.checkValidity()){
         const level=document.getElementById('difficulty').value;
         const name = document.getElementById('name').value;
-        //העלאת הרמה - קל או קשה לוכל סטורג
-        localStorage.setItem('gameLevel',level);
-        localStorage.setItem('playerName',name);
+        // //העלאת הרמה - קל או קשה לוכל סטורג
+        // localStorage.setItem('gameLevel',level);
+        // localStorage.setItem('playerName',name);
 // מעבר דף עם Query Parameters  
         window.location.href = `pages/catchTheCat.html?level=${level}&name=${encodeURIComponent(name)}`; }
         
     else{
         form.reportValidity();
     }
+})
+
+let LeaderScores = document.getElementById(scores);
+scores.addEventListener('click',()=>{
+     window.location.href = 'pages/LeaderScores.html';
 })
