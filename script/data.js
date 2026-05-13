@@ -1,7 +1,7 @@
 // data.js
 const urlParams = new URLSearchParams(window.location.search);
-const currentLevel = localStorage.getItem('gameLevel') || 'easy';
-const playerName = localStorage.getItem('playerName') || 'שחקן אנונימי';
+const currentLevel = urlParams.get('level') || 'easy';
+const playerName = urlParams.get('name') || 'שחקן אנונימי';
 
 export const locations = [
     {
