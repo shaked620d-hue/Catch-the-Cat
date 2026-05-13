@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const currentLevel = urlParams.get('level') || 'easy';
 const playerName = urlParams.get('name') || 'שחקן אנונימי';
 
-export const locations = [
+ const locations = [
     {
         id: 1,
         text: ` ${playerName} החתלתול הקטן הלך לאיבוד. צריך למצוא אותו!`,
@@ -12,7 +12,7 @@ export const locations = [
         missionItems: [
             {
                 question: "כמה חיפושיות יש בגינה?",
-                correctAnswer: "7",
+                correctAnswer: "6",
             },
             {
                 question: "כמה פטריות יש בגינה?",

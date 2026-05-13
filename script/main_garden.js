@@ -1,4 +1,4 @@
-import { locations,showLocation } from './data.js';
+import { showLocation } from './data.js';
 
 let currentLocationId;
 let start = false;
