@@ -83,7 +83,8 @@ function startGameTimer() {
     gameTimer = setInterval(() => {
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
-            window.location.href = 'finish.html';
+            window.location.href = `finish.html?level=${currentLevel}&name=${encodeURIComponent(playerName)}`;
+            //window.location.href = 'finish.html';
         }
         else {
             timeLeft--;
@@ -503,7 +504,8 @@ function mission4_drag() {
                     counterLevels++;
                     localStorage.setItem('finishedLevels', counterLevels); // שמירה
                     saveHighScore(playerName, timeLeft);
-                    window.location.href = "finish.html"; // 👈 מעבר דף
+                    window.location.href = `finish.html?level=${currentLevel}&name=${encodeURIComponent(playerName)}`;
+                  //  window.location.href = "finish.html"; // 👈 מעבר דף
                 }, 500);
             }
         };

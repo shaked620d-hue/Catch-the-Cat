@@ -1,3 +1,8 @@
+const urlParams = new URLSearchParams(window.location.search);
+
+const level = urlParams.get('level');
+const name = urlParams.get('name');
+
 /**
  * מציג הודעה בהתאם למספר השלבים שהשחקן סיים.
  * אם השחקן עבר פחות מ־4 שלבים תוצג הודעת התקדמות,
@@ -21,7 +26,9 @@ else{
 
 // שחק שוב
 document.getElementById('playAgainBtn').addEventListener('click', () => {
-    window.location.href = 'catchTheCat.html';
+    window.location.href =
+`catchTheCat.html?level=${level}&name=${encodeURIComponent(name)}`;
+   // window.location.href = 'catchTheCat.html';
 });
 
 document.getElementById('comebake').addEventListener('click', () => {
